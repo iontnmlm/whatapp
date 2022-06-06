@@ -35,8 +35,8 @@ public class WhatsApp {
 
         Thread thread = new Thread(() -> {
             while (true) {
-                boolean firstPage = driver.getPageSource().contains("למקד את הטלפון מול המסך כדי לצלם את הקוד");
-                if (!firstPage) {
+                boolean firstPage = driver.getPageSource().contains("תיבת טקסט להזנת החיפוש");
+                if (firstPage) {
                     Window window = new Window();
                     break;
                 }
