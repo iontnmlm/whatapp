@@ -27,7 +27,7 @@ public class WhatsApp {
 
     public static void OpenTheWhatApp() {
 
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\User\\Downloads\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Eliyahu toronto\\Dropbox\\PC\\Downloads\\Eli\\chromedriver.exe");
         ChromeDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://web.whatsapp.com/");
@@ -37,7 +37,9 @@ public class WhatsApp {
             while (true) {
                 boolean firstPage = driver.getPageSource().contains("תיבת טקסט להזנת החיפוש");
                 if (firstPage) {
-                    Window window = new Window();
+
+                    Window window1 = new Window(driver);
+
                     break;
                 }
 

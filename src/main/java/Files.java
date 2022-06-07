@@ -1,3 +1,5 @@
+import org.openqa.selenium.chrome.ChromeDriver;
+
 import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,9 +28,16 @@ public class Files extends JFrame{
         if(checkNum(num) && checkMas(mas)){
             //כאן אתם צריכים להכניס את מספרים 3,4
         }
+
     }
 
-
+   public Files(ChromeDriver driver){
+       try {
+           OpenChat openChat = new OpenChat(driver);
+       } catch (FileNotFoundException e) {
+           throw new RuntimeException(e);
+       }
+   }
     public static boolean checkNum (File num){
         String str = readFromFile(num);
 

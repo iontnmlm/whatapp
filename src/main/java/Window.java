@@ -1,16 +1,16 @@
+import org.openqa.selenium.chrome.ChromeDriver;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
 public class Window extends JFrame {
-    public static void main(String[] args) {
-        Window window = new Window();
-    }
+
 
     public final int Square = 500;
     public final int X = 0;
 
-    public Window(){
+    public Window(ChromeDriver driver){
         this.setLayout(null);
         this.setBounds(X, X, Square, Square);
         this.setLocationRelativeTo(null);
@@ -51,6 +51,9 @@ public class Window extends JFrame {
             String saveNum = textBoxNum.getText();
 
             Files files = new Files(saveMas,saveNum);
+            this.dispose();
+            Files file = new Files(driver);
+
 
 
         });
@@ -60,4 +63,5 @@ public class Window extends JFrame {
 
 
     }
+
 }
