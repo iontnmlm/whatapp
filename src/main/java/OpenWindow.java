@@ -2,7 +2,7 @@ import javax.swing.*;
 
 public class OpenWindow extends JFrame{
 
-    public void OpenWindow (){
+    public  OpenWindow (){
         final int Square = 500;
         final int X = 0;
 
@@ -10,5 +10,6 @@ public class OpenWindow extends JFrame{
         this.setBounds(X, X, Square, Square);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
 }
