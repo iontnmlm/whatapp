@@ -6,7 +6,6 @@ import java.io.File;
 
 public class Window extends JFrame {
 
-
     public final int Square = 500;
     public final int X = 0;
 
@@ -50,14 +49,10 @@ public class Window extends JFrame {
             String saveMas = textBoxMas.getText();
             String saveNum = textBoxNum.getText();
 
-            Files files = new Files(saveMas,saveNum,driver);
+            CheckUserData files = new CheckUserData(saveMas, saveNum, driver);
             this.dispose();
         });
 
         this.setVisible(true);
-
-
-
     }
-
 }
