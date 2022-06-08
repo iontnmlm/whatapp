@@ -28,7 +28,7 @@ public class WhatsApp {
     public static void OpenTheWhatApp() {
         System.setProperty(
                 "webdriver.chrome.driver",
-                "C:\\Users\\ELI\\Downloads\\chromedriver_win32\\chromedriver.exe");
+                "C:\\Users\\User\\Downloads\\chromedriver_win32\\chromedriver.exe");
         ChromeDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://web.whatsapp.com/");
@@ -48,3 +48,5 @@ public class WhatsApp {
     }
 
 }
+
+// yoni - "C:\\Users\\User\\Downloads\\chromedriver_win32\\chromedriver.exe"
