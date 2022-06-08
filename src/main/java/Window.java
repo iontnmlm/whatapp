@@ -48,9 +48,9 @@ public class Window extends JFrame {
 
             String saveMas = textBoxMas.getText();
             String saveNum = textBoxNum.getText();
-
-            CheckUserData files = new CheckUserData(saveMas, saveNum, driver);
             this.dispose();
+            CheckUserData files = new CheckUserData(saveMas, saveNum, driver);
+
         });
 
         this.setVisible(true);

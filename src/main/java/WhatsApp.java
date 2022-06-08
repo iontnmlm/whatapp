@@ -4,10 +4,10 @@ import javax.swing.*;
 
 public class WhatsApp {
     public static void main(String[] args) {
-        Window();
+        window();
     }
 
-    public static void Window() {
+    public static void window() {
         JFrame frame = new JFrame();
         frame.setLayout(null);
         frame.setBounds(0, 0, 500, 500);
@@ -21,11 +21,11 @@ public class WhatsApp {
         frame.setVisible(true);
         button.addActionListener((even) -> {
             frame.dispose();
-            OpenTheWhatApp();
+            openTheWhatApp();
         });
     }
 
-    public static void OpenTheWhatApp() {
+    public static void openTheWhatApp() {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\Eliyahu toronto\\Dropbox\\PC\\Downloads\\Eli\\chromedriver.exe");
         ChromeDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -48,3 +48,5 @@ public class WhatsApp {
     }
 
 }
+
+// "C:\\Users\\Eliyahu toronto\\Dropbox\\PC\\Downloads\\Eli\\chromedriver.exe";

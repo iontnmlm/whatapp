@@ -22,7 +22,7 @@ public class OpenChat {
         WebElement chat = driver.findElement(By.cssSelector("#fallback_block > div > div > h4:nth-child(2) > a"));
         chat.click();
         try {
-            Thread.sleep(10000);
+            Thread.sleep(5000);
             SendMessage sendMessage = new SendMessage(driver);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);

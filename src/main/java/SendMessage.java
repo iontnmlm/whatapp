@@ -34,6 +34,14 @@ public class SendMessage {
         JLabel label = new JLabel("ההודעה נשלחה בהצלחה");
         label.setBounds(100, 100, 300, 33);
         openWindow.add(label);
+        try {
+            Thread.sleep(5000);
+            driver.close();
+            openWindow.dispose();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
 
 
     }
