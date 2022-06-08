@@ -32,7 +32,7 @@ public class SendMessage {
 
         OpenWindow openWindow = new OpenWindow();
         JLabel label = new JLabel("ההודעה נשלחה בהצלחה");
-        label.setBounds(100, 100, 300, 33);
+        label.setBounds(100, 100, 300, 300);
         openWindow.add(label);
         try {
             Thread.sleep(5000);
