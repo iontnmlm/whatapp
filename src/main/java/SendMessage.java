@@ -32,17 +32,18 @@ public class SendMessage {
 
         OpenWindow openWindow = new OpenWindow();
         JLabel label = new JLabel("ההודעה נשלחה בהצלחה");
+        label.setLayout(null);
         label.setBounds(100, 100, 300, 300);
         openWindow.add(label);
+
         try {
-            Thread.sleep(5000);
-            driver.close();
-            openWindow.dispose();
+            Thread.sleep(7000);
+
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
-
+        driver.close();
+        openWindow.dispose();
 
     }
 
