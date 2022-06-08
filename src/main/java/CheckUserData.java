@@ -9,6 +9,13 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class CheckUserData extends JFrame{
+    private final int x =70;
+    private final int y =50;
+    private final int width =400;
+    private final int height =100;
+    private final int sizeColor =20;
+    public static final int Window_Width = 400;
+    public static final int Window_Height = 250;
     File mas = new File("textBoxMas.txt");
     File num = new File("textBoxNum.txt");
 
@@ -16,19 +23,19 @@ public class CheckUserData extends JFrame{
         boolean bMas = true,bNum = true;
 
         if(message.length() == 0 ) {
-            OpenWindow openWindow = new OpenWindow();
+            OpenWindow openWindow = new OpenWindow(Window_Width,Window_Height);
             JLabel label = new JLabel("You didn't enter massage!");
-            label.setBounds(70, 50, 400, 100);
+            label.setBounds(x,y,width,height);
             label.setFont(new Font("Arial", Font.BOLD, 20));
             openWindow.add(label);
 
             bMas = false;
 
         }else if (number.length() == 0) {
-            OpenWindow openWindow = new OpenWindow();
+            OpenWindow openWindow = new OpenWindow(Window_Width,Window_Height);
             JLabel label = new JLabel("You didn't enter number!");
-            label.setBounds(70, 50, 400, 100);
-            label.setFont(new Font("Arial", Font.BOLD, 20));
+            label.setBounds(x,y,width,height);
+            label.setFont(new Font("Arial", Font.BOLD, sizeColor));
             openWindow.add(label);
 
             bNum = false;
@@ -68,7 +75,7 @@ public class CheckUserData extends JFrame{
 
     public static boolean checkNum (String str){
         if(str.charAt(0) != '0' || str.charAt(1) != '5' || str.length()!= 10){
-            OpenWindow openWindow = new OpenWindow();
+            OpenWindow openWindow = new OpenWindow(Window_Width,Window_Height);
             JLabel label = new JLabel("Your number not proper!");
             label.setBounds(70, 50, 400, 100);
             label.setFont(new Font("Arial", Font.BOLD, 20));
@@ -78,7 +85,7 @@ public class CheckUserData extends JFrame{
         }
         for (int i = 0; i < 10; i++) {
             if (str.charAt(i) > 57 || str.charAt(i) < 48) {
-                OpenWindow openWindow = new OpenWindow();
+                OpenWindow openWindow = new OpenWindow(Window_Width,Window_Height);
                 JLabel label = new JLabel("You can only enter numbers!");
                 label.setBounds(70, 50, 400, 100);
                 label.setFont(new Font("Arial", Font.BOLD, 20));

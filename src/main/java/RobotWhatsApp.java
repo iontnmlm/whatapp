@@ -34,7 +34,7 @@ public class RobotWhatsApp {
     public static void OpenTheWhatsApp() {
         System.setProperty(
                 "webdriver.chrome.driver",
-                "C:\\Users\\ELI\\Downloads\\chromedriver_win32\\chromedriver.exe"    );
+                "C:\\\\Users\\\\Eliyahu toronto\\\\Dropbox\\\\PC\\\\Downloads\\\\Eli\\\\chromedriver.exe"    );
         ChromeDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://web.whatsapp.com/");
@@ -44,7 +44,7 @@ public class RobotWhatsApp {
             while (true) {
                 boolean firstPage = driver.getPageSource().contains("תיבת טקסט להזנת החיפוש");
                 if (firstPage) {
-                    UserInputWindow inputWindow = new UserInputWindow(driver);
+                    Connection connection = new Connection(driver);
                     break;
                 }
 

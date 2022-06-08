@@ -10,8 +10,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SendMessage {
-
-
+    private final int x =100;
+    private final int y =50;
+    private final int width =400;
+    private final int height =100;
+    private final int sizeColor =20;
+    private final int timeSleep =5000;
+    public static final int Window_Width = 400;
+    public static final int Window_Height = 250;
     public SendMessage(ChromeDriver driver) {
 
 
@@ -28,17 +34,17 @@ public class SendMessage {
         WebElement element = driver.findElement(By.cssSelector("#main > footer > div._2BU3P.tm2tP.copyable-area > div > span:nth-child(2) > div > div._2lMWa > div._3HQNh._1Ae7k"));
         element.click();
 
-        OpenWindow openWindow = new OpenWindow();
+        OpenWindow openWindow = new OpenWindow(Window_Width,Window_Height);
 
         JLabel label = new JLabel();
         label.setText("ההודעה נשלחה בהצלחה");
-        label.setBounds(100, 50, 400, 100);
-        label.setFont(new Font("Arial", Font.BOLD, 20));
+        label.setBounds(x,y,width,height);
+        label.setFont(new Font("Arial", Font.BOLD, sizeColor));
         openWindow.add(label);
         openWindow.setVisible(true);
 
         try {
-            Thread.sleep(7000);
+            Thread.sleep(timeSleep);
 
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
@@ -49,7 +55,7 @@ public class SendMessage {
         driver.close();
         new Thread(() ->{
             try {
-                Thread.sleep(5000);
+                Thread.sleep(timeSleep);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

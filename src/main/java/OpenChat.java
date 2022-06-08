@@ -7,7 +7,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class OpenChat {
-    private final int TOW_SECONDS = 2000;
+    private final int towSeconds = 2000;
+    private final int timeSleep = 8000;
     public OpenChat(ChromeDriver driver) throws FileNotFoundException {
         driver.manage().window().maximize();
         String phoneNumber = readFile();
@@ -15,14 +16,14 @@ public class OpenChat {
         WebElement click = driver.findElement(By.id("action-button"));
         click.click();
         try {
-            Thread.sleep(TOW_SECONDS);
+            Thread.sleep(towSeconds);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         WebElement chat = driver.findElement(By.cssSelector("#fallback_block > div > div > h4:nth-child(2) > a"));
         chat.click();
         try {
-            Thread.sleep(8000);
+            Thread.sleep(timeSleep);
             SendMessage sendMessage = new SendMessage(driver);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
