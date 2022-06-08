@@ -4,10 +4,10 @@ import javax.swing.*;
 
 public class WhatsApp {
     public static void main(String[] args) {
-        window();
+        Window();
     }
 
-    public static void window() {
+    public static void Window() {
         JFrame frame = new JFrame();
         frame.setLayout(null);
         frame.setBounds(0, 0, 500, 500);
@@ -21,12 +21,14 @@ public class WhatsApp {
         frame.setVisible(true);
         button.addActionListener((even) -> {
             frame.dispose();
-            openTheWhatApp();
+            OpenTheWhatApp();
         });
     }
 
-    public static void openTheWhatApp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Eliyahu toronto\\Dropbox\\PC\\Downloads\\Eli\\chromedriver.exe");
+    public static void OpenTheWhatApp() {
+        System.setProperty(
+                "webdriver.chrome.driver",
+                "C:\\Users\\User\\Downloads\\chromedriver_win32\\chromedriver.exe");
         ChromeDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://web.whatsapp.com/");
@@ -36,9 +38,7 @@ public class WhatsApp {
             while (true) {
                 boolean firstPage = driver.getPageSource().contains("תיבת טקסט להזנת החיפוש");
                 if (firstPage) {
-
                     Window window1 = new Window(driver);
-
                     break;
                 }
 
@@ -50,3 +50,4 @@ public class WhatsApp {
 }
 
 // tronto -  "C:\\Users\\Eliyahu toronto\\Dropbox\\PC\\Downloads\\Eli\\chromedriver.exe";
+// yoni  - "C:\\Users\\User\\Downloads\\chromedriver_win32\\chromedriver.exe"
