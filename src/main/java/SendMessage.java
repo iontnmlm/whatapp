@@ -29,11 +29,23 @@ public class SendMessage {
         element.click();
 
         OpenWindow openWindow = new OpenWindow();
-        JLabel label = new JLabel("ההודעה נשלחה בהצלחה");
+
+        JLabel label = new JLabel();
+        label.setText("ההודעה נשלחה בהצלחה");
         label.setBounds(100, 50, 400, 100);
         label.setFont(new Font("Arial", Font.BOLD, 20));
         openWindow.add(label);
+        openWindow.setVisible(true);
 
+        try {
+            Thread.sleep(7000);
+
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        openWindow.dispose();
+        driver.close();
         driver.close();
         new Thread(() ->{
             try {
