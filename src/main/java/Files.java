@@ -11,72 +11,78 @@ public class Files extends JFrame{
     File mas = new File("textBoxMas.txt");
     File num = new File("textBoxNum.txt");
 
-    public Files(String message,String number){
-        try {
-            FileWriter writer = new FileWriter(mas);
-            FileWriter writer1 = new FileWriter(num);
+    public Files(String message,String number,ChromeDriver driver){
+        boolean bMas = true,bNum = true;
 
-            writer.write(message);
-            writer.close();
 
-            writer1.write(number);
-            writer1.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        if(checkNum(num) && checkMas(mas)){
-            //כאן אתם צריכים להכניס את מספרים 3,4
-        }
-
-    }
-
-   public Files(ChromeDriver driver){
-       try {
-           OpenChat openChat = new OpenChat(driver);
-       } catch (FileNotFoundException e) {
-           throw new RuntimeException(e);
-       }
-   }
-    public static boolean checkNum (File num){
-        String str = readFromFile(num);
-
-        if (str == null) {
-            OpenWindow window = new OpenWindow();
-            JLabel label = new JLabel("you don't put number");
-            window.add(label);
-            return false;
-        }
-            for (int i = 0; i < str.length(); i++) {
-            if(str.charAt(i)>57 || str.charAt(i)<48){
-                OpenWindow window = new OpenWindow();
-                JLabel label = new JLabel("your number nut proper");
-                window.add(label);
-                return false;
-            }
-
-            if(str.charAt(0)!= 0 || str.charAt(1)!= 5){
-                OpenWindow window = new OpenWindow();
-                JLabel label = new JLabel("your number nut proper");
-                window.add(label);
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public static boolean checkMas (File mas){
-        String str = readFromFile(mas);
-
-        if (str == null) {
+        if(message.length() == 0 ){
             OpenWindow window = new OpenWindow();
             JLabel label = new JLabel("you don't enter anything");
+            System.out.println(window.getWidth()+""+window.getHeight());
+            label.setBounds(window.getWidth()/3,window.getHeight()/4, window.getWidth()/2, window.getHeight()/4 );
             window.add(label);
-            return false;
+            bMas = false;
+
+        }else if ( number.length() == 0) {
+            OpenWindow window = new OpenWindow();
+            JLabel label = new JLabel("you don't enter number");
+            label.setBounds(window.getWidth()/3,window.getHeight()/2, window.getWidth()/2, window.getHeight()/4 );
+            window.add(label);
+            bNum = false;
+
+        }else {
+            try {
+                FileWriter writerMas = new FileWriter(mas);
+                FileWriter writerNum = new FileWriter(num);
+
+
+                writerNum.write(number);
+                writerNum.close();
+
+                String strNum = readFromFile(num);
+                bNum = checkNum(strNum);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
         }
-        return true;
+        if (bNum&&bMas){
+            try {
+                OpenChat openChat = new OpenChat(driver);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
     }
 
+
+
+
+    public static boolean checkNum (String str){
+
+        if(str.charAt(0) != '0' || str.charAt(1) != '5' || str.length()!= 10){
+            OpenWindow window = new OpenWindow();
+            JLabel label = new JLabel("your number nut proper");
+            label.setBounds(window.getWidth()/3,window.getHeight()/2, window.getWidth()/2, window.getHeight()/4 );
+            window.add(label);
+
+            return false;
+        }
+
+        for (int i = 0; i < 10; i++) {
+            if (str.charAt(i) > 57 || str.charAt(i) < 48) {
+                OpenWindow window = new OpenWindow();
+                JLabel label = new JLabel("you put words");
+                label.setBounds(window.getWidth() / 3, window.getHeight() / 2, window.getWidth() / 2, window.getHeight() / 4);
+                window.add(label);
+                return false;
+            }
+        }
+      return true;
+    }
 
     public static String readFromFile(File file){
         String text;
@@ -90,11 +96,5 @@ public class Files extends JFrame{
         }
         return text;
     }
-
-
-
-
-
-
 
 }

@@ -50,12 +50,8 @@ public class Window extends JFrame {
             String saveMas = textBoxMas.getText();
             String saveNum = textBoxNum.getText();
 
-            Files files = new Files(saveMas,saveNum);
+            Files files = new Files(saveMas,saveNum,driver);
             this.dispose();
-            Files file = new Files(driver);
-
-
-
         });
 
         this.setVisible(true);
