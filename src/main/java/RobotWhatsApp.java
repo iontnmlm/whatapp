@@ -1,8 +1,13 @@
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import javax.swing.*;
+import java.awt.*;
 
-public class WhatsApp {
+public class RobotWhatsApp {
+
+    public static final int Window_Width = 400;
+    private static final int Window_Height = 300;
+
     public static void main(String[] args) {
         Window();
     }
@@ -10,25 +15,26 @@ public class WhatsApp {
     public static void Window() {
         JFrame frame = new JFrame();
         frame.setLayout(null);
-        frame.setBounds(0, 0, 500, 500);
+        frame.setBounds(0, 0, Window_Width, Window_Height);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
         JButton button = new JButton("Open the WhatApp");
-        button.setBounds(200, 200, 150, 150);
+        button.setBounds(40, 100, Window_Height, Window_Height/5);
+        button.setFont(new Font("Arial", Font.BOLD, 18));
         frame.add(button);
         frame.setVisible(true);
         button.addActionListener((even) -> {
             frame.dispose();
-            OpenTheWhatApp();
+            OpenTheWhatsApp();
         });
     }
 
-    public static void OpenTheWhatApp() {
+    public static void OpenTheWhatsApp() {
         System.setProperty(
                 "webdriver.chrome.driver",
-                "C:\\\\Users\\\\Eliyahu toronto\\\\Dropbox\\\\PC\\\\Downloads\\\\Eli\\\\chromedriver.exe");
+                "C:\\Users\\ELI\\Downloads\\chromedriver_win32\\chromedriver.exe"    );
         ChromeDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://web.whatsapp.com/");
@@ -38,7 +44,7 @@ public class WhatsApp {
             while (true) {
                 boolean firstPage = driver.getPageSource().contains("תיבת טקסט להזנת החיפוש");
                 if (firstPage) {
-                    Window window1 = new Window(driver);
+                    UserInputWindow inputWindow = new UserInputWindow(driver);
                     break;
                 }
 
@@ -49,5 +55,6 @@ public class WhatsApp {
 
 }
 
-// tronto  -  "C:\\Users\\Eliyahu toronto\\Dropbox\\PC\\Downloads\\Eli\\chromedriver.exe";
-// yoni  - "C:\\Users\\User\\Downloads\\chromedriver_win32\\chromedriver.exe"
+// Elyahu  ->  "C:\\Users\\Eliyahu toronto\\Dropbox\\PC\\Downloads\\Eli\\chromedriver.exe";
+// yoni  -> "C:\\Users\\User\\Downloads\\chromedriver_win32\\chromedriver.exe"
+// eli -> "C:\\Users\\ELI\\Downloads\\chromedriver_win32\\chromedriver.exe"

@@ -1,6 +1,7 @@
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -15,18 +16,21 @@ public class CheckUserData extends JFrame{
         boolean bMas = true,bNum = true;
 
         if(message.length() == 0 ) {
-            OpenWindow window = new OpenWindow();
-            JLabel label = new JLabel("you don't enter anything");
-            System.out.println(window.getWidth()+""+window.getHeight());
-            label.setBounds(window.getWidth()/3,window.getHeight()/4, window.getWidth()/2, window.getHeight()/4 );
-            window.add(label);
+            OpenWindow openWindow = new OpenWindow();
+            JLabel label = new JLabel("You didn't enter massage!");
+            label.setBounds(70, 50, 400, 100);
+            label.setFont(new Font("Arial", Font.BOLD, 20));
+            openWindow.add(label);
+
             bMas = false;
 
         }else if (number.length() == 0) {
-            OpenWindow window = new OpenWindow();
-            JLabel label = new JLabel("you don't enter number");
-            label.setBounds(window.getWidth()/3,window.getHeight()/2, window.getWidth()/2, window.getHeight()/4 );
-            window.add(label);
+            OpenWindow openWindow = new OpenWindow();
+            JLabel label = new JLabel("You didn't enter number!");
+            label.setBounds(70, 50, 400, 100);
+            label.setFont(new Font("Arial", Font.BOLD, 20));
+            openWindow.add(label);
+
             bNum = false;
 
         }else {
@@ -51,7 +55,6 @@ public class CheckUserData extends JFrame{
         if (bNum && bMas){
             try {
                 OpenChat openChat = new OpenChat(driver);
-
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
@@ -65,18 +68,22 @@ public class CheckUserData extends JFrame{
 
     public static boolean checkNum (String str){
         if(str.charAt(0) != '0' || str.charAt(1) != '5' || str.length()!= 10){
-            OpenWindow window = new OpenWindow();
-            JLabel label = new JLabel("your number nut proper");
-            label.setBounds(window.getWidth()/3,window.getHeight()/2, window.getWidth()/2, window.getHeight()/4 );
-            window.add(label);
+            OpenWindow openWindow = new OpenWindow();
+            JLabel label = new JLabel("Your number not proper!");
+            label.setBounds(70, 50, 400, 100);
+            label.setFont(new Font("Arial", Font.BOLD, 20));
+            openWindow.add(label);
+
             return false;
         }
         for (int i = 0; i < 10; i++) {
             if (str.charAt(i) > 57 || str.charAt(i) < 48) {
-                OpenWindow window = new OpenWindow();
-                JLabel label = new JLabel("You can only put numbers!");
-                label.setBounds(window.getWidth() / 3, window.getHeight() / 2, window.getWidth() / 2, window.getHeight() / 4);
-                window.add(label);
+                OpenWindow openWindow = new OpenWindow();
+                JLabel label = new JLabel("You can only enter numbers!");
+                label.setBounds(70, 50, 400, 100);
+                label.setFont(new Font("Arial", Font.BOLD, 20));
+                openWindow.add(label);
+
                 return false;
             }
         }
