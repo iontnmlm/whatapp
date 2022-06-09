@@ -5,9 +5,7 @@ import java.awt.*;
 
 public class RobotWhatsApp {
 
-    public static final int Window_Width = 400;
-    private static final int Window_Height = 300;
-
+    public static final int Window_Width = 400 , Window_Height = 300;
 
     public static void main(String[] args) {
         button();
@@ -31,7 +29,7 @@ public class RobotWhatsApp {
     public static void openTheWhatsApp() {
         System.setProperty(
                 "webdriver.chrome.driver",
-                "C:\\\\Users\\\\Eliyahu toronto\\\\Dropbox\\\\PC\\\\Downloads\\\\Eli\\\\chromedriver.exe"    );
+                "C:\\Users\\User\\Downloads\\chromedriver_win32\\chromedriver.exe");
         ChromeDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://web.whatsapp.com/");

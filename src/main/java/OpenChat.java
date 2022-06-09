@@ -7,8 +7,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class OpenChat {
-    private final int towSeconds = 2000;
-    private final int timeSleep = 8000;
+    private final int towSeconds = 2000 , timeSleep = 8000;
+
     public OpenChat(ChromeDriver driver) throws FileNotFoundException {
         driver.manage().window().maximize();
         String phoneNumber = readFile();

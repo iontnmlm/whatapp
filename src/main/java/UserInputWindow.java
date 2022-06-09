@@ -2,13 +2,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
 
 public class UserInputWindow extends JFrame {
 
-    public final int Window_Width = 500;
-    public final int Window_Height = 400;
-    public final int StartAt = 0;
+    public final int Window_Width = 500 , Window_Height = 400 , StartAt = 0;
 
     public UserInputWindow(ChromeDriver driver) {
         this.setLayout(null);

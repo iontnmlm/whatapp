@@ -3,14 +3,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import javax.swing.*;
 
 public class Connection {
-    public final int X = 0;
+    public final int y = 0;
     public static final int Window_Width = 500;
     public static final int Window_Height = 500;
     public Connection (ChromeDriver driver) {
         OpenWindow openWindow = new OpenWindow(Window_Width,Window_Height);
         JLabel label = new JLabel();
         label.setText("ההתחברות בוצעה בהצלחה");
-        label.setBounds(openWindow.getWidth()/5+((openWindow.getWidth()*3)/20),X,(openWindow.getWidth()*3)/10,(openWindow.getWidth()*3)/10);
+        label.setBounds(openWindow.getWidth()/5+((openWindow.getWidth()*3)/20),y,(openWindow.getWidth()*3)/10,(openWindow.getWidth()*3)/10);
         openWindow.add(label);
 
 
