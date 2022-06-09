@@ -9,13 +9,14 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class CheckUserData extends JFrame{
-    private final int x =70 , y =50 , width =400 , height =100 , sizeColor =20;
+
     public static final int Window_Width = 400 , Window_Height = 250;
 
     File mas = new File("textBoxMas.txt");
     File num = new File("textBoxNum.txt");
 
     public CheckUserData(String message, String number, ChromeDriver driver){
+        final int x =70 , y =50 , width =400 , height =100 , sizeColor =20;
         boolean bMas = true,bNum = true;
 
         if(message.length() == 0 ) {
