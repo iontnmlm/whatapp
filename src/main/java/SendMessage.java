@@ -18,7 +18,6 @@ public class SendMessage {
         String massage = null;
         try {
             massage = readFile();
-            System.out.println(massage);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -28,8 +27,8 @@ public class SendMessage {
         WebElement element = driver.findElement(By.cssSelector("#main > footer > div._2BU3P.tm2tP.copyable-area > div > span:nth-child(2) > div > div._2lMWa > div._3HQNh._1Ae7k"));
         element.click();
 
-        OpenWindow openWindow = new OpenWindow(400,250);
-        label(openWindow);
+//        OpenWindow openWindow = new OpenWindow(400,250);
+//        label(openWindow);
 
 
 
@@ -37,8 +36,9 @@ public class SendMessage {
         new Thread(() ->{
             try {
                 Thread.sleep(timeSleep);
-                openWindow.dispose();
-                driver.close();
+//                openWindow.dispose();
+//                driver.close();
+                CheckStatus checkStatus = new CheckStatus(driver);
 
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
