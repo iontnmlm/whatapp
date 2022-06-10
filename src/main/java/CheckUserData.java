@@ -25,6 +25,8 @@ public class CheckUserData extends JFrame{
             label.setBounds(x,y,width,height);
             label.setFont(new Font("Arial", Font.BOLD, 20));
             openWindow.add(label);
+            openWindow.setVisible(true);
+
 
             bMas = false;
 
@@ -34,6 +36,7 @@ public class CheckUserData extends JFrame{
             label.setBounds(x,y,width,height);
             label.setFont(new Font("Arial", Font.BOLD, sizeColor));
             openWindow.add(label);
+            openWindow.setVisible(true);
 
             bNum = false;
 
@@ -77,6 +80,8 @@ public class CheckUserData extends JFrame{
             label.setBounds(70, 50, 400, 100);
             label.setFont(new Font("Arial", Font.BOLD, 20));
             openWindow.add(label);
+            openWindow.setVisible(true);
+
 
             return false;
         }
@@ -87,7 +92,7 @@ public class CheckUserData extends JFrame{
                 label.setBounds(70, 50, 400, 100);
                 label.setFont(new Font("Arial", Font.BOLD, 20));
                 openWindow.add(label);
-
+                openWindow.setVisible(true);
                 return false;
             }
         }
