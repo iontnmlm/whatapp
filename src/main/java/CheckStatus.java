@@ -10,55 +10,44 @@ public class CheckStatus {
     private final int x =100 ,y = 50 , width = 400, height = 100 , sizeColor = 20 ;
     public static final int Window_Width = 400 , Window_Height = 250;
 
-    public CheckStatus(ChromeDriver driver){
+    public CheckStatus(ChromeDriver driver) {
 
-            OpenWindow status = new OpenWindow(Window_Width,Window_Height);
-            boolean oneCheck = true;
-            boolean towCheck = true;
-
-            boolean oneCheck1 = false;
-            boolean towCheck1 = false;
-
-            while (true) {
-
-                if(oneCheck) {
-                     oneCheck1 = driver.getPageSource().contains(" נשלחה ");
-                }
-                if(towCheck){
-                     towCheck1 = driver.getPageSource().contains(" נמסרה ");
-                }
-                boolean readCheck1 = driver.getPageSource().contains(" נקראה ");
+        OpenWindow status = new OpenWindow(Window_Width, Window_Height);
+        JLabel oneV = new JLabel();
+        oneV.setText("V");
+        oneV.setBounds(50,50,50,50);
+        oneV.setFont(new Font("Arial", Font.BOLD, sizeColor));
+        status.add(oneV);
+        status.setVisible(true);
 
 
-                if (oneCheck1) {
-                    JLabel label = new JLabel();
-                    label.setText("V");
-                    label.setBounds(x,y,width,height);
-                    label.setFont(new Font("Arial", Font.BOLD, sizeColor));
-                    status.add(label);
-                    oneCheck = false;
-                    status.setVisible(true);
-                }
-                 if(towCheck1){
+        while (true) {
+            boolean oneCheck = driver.getPageSource().contains(" נשלחה ");
 
-                    JLabel label = new JLabel();
-                    label.setText("V");
-                    label.setBounds(x+15,y+15,width+15,height+15);
-                    label.setFont(new Font("Arial", Font.BOLD, sizeColor));
-                    status.add(label);
-                    towCheck = false;
-                    status.setVisible(true);
-                }
-                if(readCheck1){
-                    status.dispose();
-                    break;
-                }
+            if (!oneCheck) {
+                status.dispose();
 
+                JLabel label = new JLabel();
+                label.setText("V V");
+                label.setBounds(50,50,50,50);
+                label.setFont(new Font("Arial", Font.BOLD, sizeColor));
+                status.add(label);
+                status.setVisible(true);
+                break;
+            }
+        }
+        while (true){
+            if(driver.getPageSource().contains(" נמסרה ")){
 
+            }else {
+               status.dispose();
+               break;
             }
 
+        }
     }
 
-    }
+
+}
 
 

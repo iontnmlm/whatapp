@@ -10,7 +10,7 @@ public class OpenChat {
 
 
     public OpenChat(ChromeDriver driver) throws FileNotFoundException {
-        final int towSeconds = 2000 , timeSleep = 8000;
+        final int towSeconds = 2000, timeSleep = 8000;
         driver.manage().window().maximize();
         String phoneNumber = readFile();
         driver.get(phoneNumber);
@@ -23,12 +23,14 @@ public class OpenChat {
         }
         WebElement chat = driver.findElement(By.cssSelector("#fallback_block > div > div > h4:nth-child(2) > a"));
         chat.click();
-        try {
-            Thread.sleep(timeSleep);
-            SendMessage sendMessage = new SendMessage(driver);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+
+        while (true){
+
+            if (driver.getPageSource().contains("הקלדת ההודעה")) {
+                SendMessage sendMessage = new SendMessage(driver);
+                break;
+            }
+    }
 
     }
 
