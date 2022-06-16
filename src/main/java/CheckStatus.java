@@ -1,14 +1,7 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
 
 public class CheckStatus extends JFrame {
 
@@ -59,13 +52,12 @@ public class CheckStatus extends JFrame {
     public void waitRead() {
         Thread thread1 = new Thread(() -> {
             while (true) {
-                if (driver.getPageSource().contains(" נמסרה ")) {
-
-                } else {
+                if (!driver.getPageSource().contains(" נמסרה ")) {
                     label.setText("ההודעה נקראה!");
                     openWindow.revalidate();
                     driver.close();
                     break;
+
                 }
 
             }
@@ -74,8 +66,6 @@ public class CheckStatus extends JFrame {
 
 
     }
-
-
 
 
 }
