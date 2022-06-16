@@ -14,7 +14,7 @@ public class RobotWhatsApp {
 
     public static void button() {
         OpenWindow openWindow = new OpenWindow(Window_Width, Window_Height);
-        JButton button = new JButton("Open the WhatApp");
+        JButton button = new JButton("Open WhatApp");
         button.setBounds(40, 100, Window_Height, Window_Height / 5);
         button.setFont(new Font("Arial", Font.BOLD, 18));
         openWindow.add(button);
