@@ -10,80 +10,72 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class CheckStatus extends JFrame{
+public class CheckStatus extends JFrame {
 
     private final int x = 100, y = 50, width = 400, height = 100, sizeColor = 20;
     public static final int Window_Width = 400, Window_Height = 250;
+    ChromeDriver driver = null;
+
+    OpenWindow openWindow = new OpenWindow(Window_Width, Window_Height);
+    JLabel label = new JLabel();
 
     public CheckStatus(ChromeDriver driver) {
-        OpenWindow openWindow = new OpenWindow(Window_Width,Window_Height);
-        OpenWindow openWindow1 = new OpenWindow(Window_Width,Window_Height);
-        OpenWindow openWindow2 = new OpenWindow(Window_Width,Window_Height);
+        this.driver = driver;
 
-        JLabel oneV = new JLabel("V");
-        oneV.setLayout(null);
-        oneV.setBounds(70,0,300,300);
-        oneV.setFont(new Font("Arial", Font.BOLD, 20));
-        openWindow.add(oneV);
+        initWindow();
+
+        label.setText("V");
+        openWindow.revalidate();
+
+        waitSend();
+    }
+
+    public void initWindow() {
+
+        label.setBounds(40, 100, Window_Height, Window_Height / 5);
+        label.setFont(new Font("Arial", Font.BOLD, 18));
+        openWindow.add(label);
         openWindow.setVisible(true);
+    }
 
-        while (true) {
-            boolean oneCheck = driver.getPageSource().contains(" נשלחה ");
+    public void waitSend() {
+        Thread thread = new Thread(() -> {
+            while (true) {
+                boolean oneCheck = driver.getPageSource().contains(" נשלחה ");
 
-            if (!oneCheck) {
+                if (!oneCheck) {
 
-                openWindow.dispose();
-                JLabel towV = new JLabel("V V");
-                towV.setBounds(100,0,300,300);
-                towV.setFont(new Font("Arial", Font.BOLD, 20));
-                openWindow2.add(towV);
-                openWindow2.setVisible(true);
+                    label.setText("V V");
+                    openWindow.revalidate();
+                    waitRead();
 
-
-
-                break;
+                    break;
+                }
             }
-        }
+        });
+        thread.start();
+    }
 
-
-
-        Thread thread = new Thread(()->{
+    public void waitRead() {
+        Thread thread1 = new Thread(() -> {
             while (true) {
                 if (driver.getPageSource().contains(" נמסרה ")) {
 
                 } else {
-                    openWindow2.dispose();
-                    JLabel readMessage = new JLabel("ההודעה נקראה!");
-                    readMessage.setLayout(null);
-                    readMessage.setBounds(70,0,300,300);
-                    readMessage.setFont(new Font("Arial", Font.BOLD, 20));
-                    openWindow1.add(readMessage);
-                    openWindow1.setVisible(true);
-
+                    label.setText("ההודעה נקראה!");
+                    openWindow.revalidate();
                     driver.close();
                     break;
                 }
 
             }
-        });thread.start();
+        });
+        thread1.start();
+
 
     }
-
-
-//    public static String readFile() throws FileNotFoundException {
-//        File path = new File("textBoxMas.txt");
-//        Scanner scanner = new Scanner(path);
-//        String text = scanner.nextLine();
-//        return text;
-//    }
 
 
 
 
 }
-
-/*
-
- */
-
-
