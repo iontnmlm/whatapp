@@ -9,5 +9,6 @@ public class OpenWindow extends JFrame{
         this.setBounds(StartAt, StartAt, Window_Width, Window_Height);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setResizable(false);
     }
 }

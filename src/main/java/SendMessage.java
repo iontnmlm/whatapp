@@ -26,6 +26,7 @@ public class SendMessage {
 
         WebElement element = driver.findElement(By.cssSelector("#main > footer > div._2BU3P.tm2tP.copyable-area > div > span:nth-child(2) > div > div._2lMWa > div._3HQNh._1Ae7k"));
         element.click();
+       // CheckStatus checkStatus2  = new CheckStatus(driver);
 
         while (true) {
             if(driver.getPageSource().contains(" נשלחה ")) {
