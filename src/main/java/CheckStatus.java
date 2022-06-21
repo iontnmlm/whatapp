@@ -10,7 +10,7 @@ public class CheckStatus extends JFrame {
     ChromeDriver driver;
 
     OpenWindow openWindow = new OpenWindow(Window_Width, Window_Height);
-    final int x = 100, y = 60, width = 250;
+    final int x = 100, y = 60, width = 250 ;
     JLabel label = new JLabel();
 
     public CheckStatus(ChromeDriver driver) {
