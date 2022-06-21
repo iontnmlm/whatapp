@@ -8,21 +8,21 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class CheckUserData extends JFrame{
+public class CheckUserData extends JFrame {
 
-    public static final int Window_Width = 400 , Window_Height = 250;
+    public static final int Window_Width = 400, Window_Height = 250;
 
     File mas = new File("textBoxMas.txt");
     File num = new File("textBoxNum.txt");
 
-    public CheckUserData(String message, String number, ChromeDriver driver){
-        final int x =70 , y =50 , width =400 , height =100 , sizeColor =20;
-        boolean bMas = true,bNum = true;
+    public CheckUserData(String message, String number, ChromeDriver driver) {
+        final int x = 70, y = 50, width = 400, height = 100, sizeColor = 20;
+        boolean bMas = true, bNum = true;
 
-        if(message.length() == 0 ) {
-            OpenWindow openWindow = new OpenWindow(Window_Width,Window_Height);
+        if (message.length() == 0) {
+            OpenWindow openWindow = new OpenWindow(Window_Width, Window_Height);
             JLabel label = new JLabel("You didn't enter massage!");
-            label.setBounds(x,y,width,height);
+            label.setBounds(x, y, width, height);
             label.setFont(new Font("Arial", Font.BOLD, 20));
             openWindow.add(label);
             openWindow.setVisible(true);
@@ -30,17 +30,17 @@ public class CheckUserData extends JFrame{
 
             bMas = false;
 
-        }else if (number.length() == 0) {
-            OpenWindow openWindow = new OpenWindow(Window_Width,Window_Height);
+        } else if (number.length() == 0) {
+            OpenWindow openWindow = new OpenWindow(Window_Width, Window_Height);
             JLabel label = new JLabel("You didn't enter number!");
-            label.setBounds(x,y,width,height);
+            label.setBounds(x, y, width, height);
             label.setFont(new Font("Arial", Font.BOLD, sizeColor));
             openWindow.add(label);
             openWindow.setVisible(true);
 
             bNum = false;
 
-        }else {
+        } else {
             try {
                 FileWriter writerMas = new FileWriter(mas);
                 FileWriter writerNum = new FileWriter(num);
@@ -59,7 +59,7 @@ public class CheckUserData extends JFrame{
             }
 
         }
-        if (bNum && bMas){
+        if (bNum && bMas) {
             try {
                 OpenChat openChat = new OpenChat(driver);
             } catch (FileNotFoundException e) {
@@ -71,11 +71,9 @@ public class CheckUserData extends JFrame{
     }
 
 
-
-
-    public static boolean checkNum (String str){
-        if(str.charAt(0) != '0' || str.charAt(1) != '5' || str.length()!= 10){
-            OpenWindow openWindow = new OpenWindow(Window_Width,Window_Height);
+    public static boolean checkNum(String str) {
+        if (str.charAt(0) != '0' || str.charAt(1) != '5' || str.length() != 10) {
+            OpenWindow openWindow = new OpenWindow(Window_Width, Window_Height);
             JLabel label = new JLabel("Your number not proper!");
             label.setBounds(70, 50, 400, 100);
             label.setFont(new Font("Arial", Font.BOLD, 20));
@@ -87,7 +85,7 @@ public class CheckUserData extends JFrame{
         }
         for (int i = 0; i < 10; i++) {
             if (str.charAt(i) > 57 || str.charAt(i) < 48) {
-                OpenWindow openWindow = new OpenWindow(Window_Width,Window_Height);
+                OpenWindow openWindow = new OpenWindow(Window_Width, Window_Height);
                 JLabel label = new JLabel("You can only enter numbers!");
                 label.setBounds(70, 50, 400, 100);
                 label.setFont(new Font("Arial", Font.BOLD, 20));
@@ -96,14 +94,14 @@ public class CheckUserData extends JFrame{
                 return false;
             }
         }
-      return true;
+        return true;
     }
 
-    public static String readFromFile(File file){
+    public static String readFromFile(File file) {
         String text;
         try {
             Scanner scanner = new Scanner(file);
-            text =scanner.nextLine();
+            text = scanner.nextLine();
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

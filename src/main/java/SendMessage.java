@@ -10,8 +10,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SendMessage {
-    private final int x =100 ,y = 50 , width = 400, height = 100 , sizeColor = 20 , timeSleep = 5000;
-    public static final int Window_Width = 400 , Window_Height = 250;
+    private final int x = 100, y = 50, width = 400, height = 100, sizeColor = 20, timeSleep = 5000;
+    public static final int Window_Width = 400, Window_Height = 250;
+
     public SendMessage(ChromeDriver driver) {
 
 
@@ -26,26 +27,23 @@ public class SendMessage {
 
         WebElement element = driver.findElement(By.cssSelector("#main > footer > div._2BU3P.tm2tP.copyable-area > div > span:nth-child(2) > div > div._2lMWa > div._3HQNh._1Ae7k"));
         element.click();
-       // CheckStatus checkStatus2  = new CheckStatus(driver);
+
 
         while (true) {
-            if(driver.getPageSource().contains(" נשלחה ")) {
+            if (driver.getPageSource().contains(" נשלחה ")) {
                 CheckStatus checkStatus = new CheckStatus(driver);
                 break;
             }
         }
 
 
-
-
-
-
     }
-    public static void label (OpenWindow openWindow){
-        openWindow = new OpenWindow(400,250);
+
+    public static void label(OpenWindow openWindow) {
+        openWindow = new OpenWindow(400, 250);
         JLabel label = new JLabel();
         label.setLayout(null);
-        label.setBounds(70,0,300,300);
+        label.setBounds(70, 0, 300, 300);
         label.setFont(new Font("Arial", Font.BOLD, 20));
         label.setText("ההתחברות בוצעה בהצלחה");
         openWindow.add(label);

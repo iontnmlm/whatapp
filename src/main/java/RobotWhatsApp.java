@@ -1,7 +1,10 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class RobotWhatsApp {
 
@@ -29,7 +32,7 @@ public class RobotWhatsApp {
     public static void openTheWhatsApp() {
         System.setProperty(
                 "webdriver.chrome.driver",
-                "C:\\\\Users\\\\Eliyahu toronto\\\\Dropbox\\\\PC\\\\Downloads\\\\Eli\\\\chromedriver.exe");
+                "C:\\\\Users\\\\User\\\\Downloads\\\\chromedriver_win32\\\\chromedriver.exe");
         ChromeDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://web.whatsapp.com/");
@@ -37,11 +40,14 @@ public class RobotWhatsApp {
 
         Thread thread = new Thread(() -> {
             while (true) {
-                boolean firstPage = driver.getPageSource().contains("תיבת טקסט להזנת החיפוש");
-                if (firstPage) {
+
+                List<WebElement> linkedList = driver.findElements(By.cssSelector("#side > div.uwk68 > div > div > div._16C8p > div > div._13NKt.copyable-text.selectable-text"));
+
+                if (!(linkedList.size() == 0)) {
                     UserInputWindow userInputWindow = new UserInputWindow(driver);
                     break;
                 }
+
 
             }
         });
@@ -52,4 +58,4 @@ public class RobotWhatsApp {
 
 // eliyahu  ->  "C:\\Users\\Eliyahu toronto\\Dropbox\\PC\\Downloads\\Eli\\chromedriver.exe";
 // yoni  -> "C:\\Users\\User\\Downloads\\chromedriver_win32\\chromedriver.exe"
-// eli -> "C:\\Users\\ELI\\Downloads\\chromedriver_win32\\chromedriver.exe"
+// eli -> "C:\\Users\\ELI\\Downloads\\chromedriver_win32\\chromedriver.exe" }

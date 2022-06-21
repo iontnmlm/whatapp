@@ -4,6 +4,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Scanner;
 
 public class OpenChat {
@@ -24,13 +25,15 @@ public class OpenChat {
         WebElement chat = driver.findElement(By.cssSelector("#fallback_block > div > div > h4:nth-child(2) > a"));
         chat.click();
 
-        while (true){
+        while (true) {
 
-            if (driver.getPageSource().contains("הקלדת ההודעה")) {
+            List<WebElement> linkedList = driver.findElements(By.cssSelector("#main > footer > div._2BU3P.tm2tP.copyable-area > div > span:nth-child(2) > div > div._2lMWa > div.p3_M1 > div > div._13NKt.copyable-text.selectable-text"));
+
+            if (!(linkedList.size() == 0)) {
                 SendMessage sendMessage = new SendMessage(driver);
                 break;
             }
-    }
+        }
 
     }
 
