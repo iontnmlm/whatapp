@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CheckStatus extends JFrame {
-
+    
 
     public static final int Window_Width = 400, Window_Height = 250;
     ChromeDriver driver;
@@ -24,7 +24,7 @@ public class CheckStatus extends JFrame {
         waitSend();
     }
 
-    public void initWindow() {//הגדרה של הטקסט
+    public void initWindow() {
 
         label.setBounds(x, y, width, Window_Height / 5);
         label.setFont(new Font("Arial", Font.BOLD, 18));
@@ -32,7 +32,7 @@ public class CheckStatus extends JFrame {
         openWindow.setVisible(true);
     }
 
-    public void waitSend() {//בדיקה האם יש 2 V
+    public void waitSend() {
         Thread thread = new Thread(() -> {
             while (true) {
                 boolean oneCheck = driver.getPageSource().contains(" נשלחה ");
