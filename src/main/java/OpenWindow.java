@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class OpenWindow extends JFrame{
+public class OpenWindow extends JFrame {
 
     public static final int StartAt = 0;
 

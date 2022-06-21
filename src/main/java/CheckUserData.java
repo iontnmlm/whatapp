@@ -15,7 +15,7 @@ public class CheckUserData extends JFrame {
     File mas = new File("textBoxMas.txt");
     File num = new File("textBoxNum.txt");
 
-    public CheckUserData(String message, String number, ChromeDriver driver) {
+    public CheckUserData(String message, String number, ChromeDriver driver) {   // Checks whether all data entered is valid
         final int x = 70, y = 50, width = 400, height = 100, sizeColor = 20;
         boolean bMas = true, bNum = true;
 
@@ -97,16 +97,14 @@ public class CheckUserData extends JFrame {
         return true;
     }
 
-    public static String readFromFile(File file) {
+    public static String readFromFile(File file) {   // read the text that the user entered.
         String text;
         try {
             Scanner scanner = new Scanner(file);
             text = scanner.nextLine();
-
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
         return text;
     }
-
 }

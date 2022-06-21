@@ -5,27 +5,36 @@ import java.awt.*;
 
 public class CheckStatus extends JFrame {
 
-    private final int x = 100, y = 50, width = 400, height = 100, sizeColor = 20;
-    public static final int Window_Width = 400, Window_Height = 250;
+    private final int x = 100, y = 20, width = 400, height = 100, sizeColor = 20;
+    public static final int Window_Width = 300, Window_Height = 200;
     ChromeDriver driver = null;
 
     OpenWindow openWindow = new OpenWindow(Window_Width, Window_Height);
     JLabel label = new JLabel();
 
+    public static void main(String[] args) {
+        System.setProperty(
+                "webdriver.chrome.driver",
+                "C:\\\\Users\\\\ELI\\\\Downloads\\\\chromedriver_win32\\\\chromedriver.exe");
+        ChromeDriver driver = new ChromeDriver();
+        CheckStatus checkStatus = new CheckStatus(driver);
+    }
     public CheckStatus(ChromeDriver driver) {
         this.driver = driver;
 
         initWindow();
 
         label.setText("V");
+        label.setFont(new Font("Arial", Font.BOLD, 20));
+        label.setForeground(Color.BLUE);
         openWindow.revalidate();
-
         waitSend();
     }
 
     public void initWindow() {
 
-        label.setBounds(40, 100, Window_Height, Window_Height / 5);
+        label.setBounds(100, 60, Window_Height, Window_Height / 5);
+
         label.setFont(new Font("Arial", Font.BOLD, 18));
         openWindow.add(label);
         openWindow.setVisible(true);
@@ -39,9 +48,9 @@ public class CheckStatus extends JFrame {
                 if (!oneCheck) {
 
                     label.setText("V V");
+                    label.setFont(new Font("Arial", Font.BOLD, 20));
                     openWindow.revalidate();
                     waitRead();
-
                     break;
                 }
             }
@@ -63,9 +72,5 @@ public class CheckStatus extends JFrame {
             }
         });
         thread1.start();
-
-
     }
-
-
 }
