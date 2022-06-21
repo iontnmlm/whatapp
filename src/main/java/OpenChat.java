@@ -11,7 +11,7 @@ public class OpenChat {
 
 
     public OpenChat(ChromeDriver driver) throws FileNotFoundException {
-        final int towSeconds = 2000, timeSleep = 8000;
+        final int towSeconds = 2000;
         driver.manage().window().maximize();
         String phoneNumber = readFile();
         driver.get(phoneNumber);
@@ -23,13 +23,13 @@ public class OpenChat {
             throw new RuntimeException(e);
         }
         WebElement chat = driver.findElement(By.cssSelector("#fallback_block > div > div > h4:nth-child(2) > a"));
-        chat.click();
+        chat.click();//מעבר לדף של איש הקשר
 
         while (true) {
 
             List<WebElement> linkedList = driver.findElements(By.cssSelector("#main > footer > div._2BU3P.tm2tP.copyable-area > div > span:nth-child(2) > div > div._2lMWa > div.p3_M1 > div > div._13NKt.copyable-text.selectable-text"));
 
-            if (!(linkedList.size() == 0)) {
+            if (!(linkedList.size() == 0)) {//בדיקה האם הדף נטען
                 SendMessage sendMessage = new SendMessage(driver);
                 break;
             }
@@ -41,7 +41,6 @@ public class OpenChat {
         File path = new File("textBoxNum.txt");
         Scanner scanner = new Scanner(path);
         String text = scanner.nextLine();
-        String phoneNumber = "https://api.whatsapp.com/send?phone=972" + text;
-        return phoneNumber;
+        return "https://api.whatsapp.com/send?phone=972" + text;
     }
 }
